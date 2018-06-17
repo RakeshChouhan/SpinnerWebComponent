@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script type="text/javascript">
+        class RKSpinner extends HTMLElement {
+            constructor() {
+                super();
+                this.attachSpinner();
+            }
+            attachSpinner() {
+                var shadow = this.attachShadow({ mode: 'open' });
+                var spinnerStyle = document.createElement("style");
+                spinnerStyle.textContent = '.rk-loader{width:50px;height:50px;border-radius:100px;border-right:2px silver solid;border-left:2px silver solid;position:relative;-webkit-animation:loaderAnimation .5s infinite;animation:loaderAnimation .5s infinite}@-webkit-keyframes loaderAnimation{0%{transform:rotate(0)}25%{transform:rotate(45deg)}50%{transform:rotate(90deg)}100%{transform:rotate(180deg)}}@-moz-keyframes loaderAnimation{0%{transform:rotate(0)}25%{transform:rotate(45deg)}50%{transform:rotate(90deg)}100%{transform:rotate(180deg)}}@-o-keyframes loaderAnimation{0%{transform:rotate(0)}25%{transform:rotate(45deg)}50%{transform:rotate(90deg)}100%{transform:rotate(180deg)}}@keyframes loaderAnimation{0%{transform:rotate(0)}25%{transform:rotate(45deg)}50%{transform:rotate(90deg)}100%{transform:rotate(180deg)}}';
+                var spinner = document.createElement("div");
+                spinner.setAttribute('class', 'rk-loader');
+                shadow.appendChild(spinner);
+                shadow.appendChild(spinnerStyle);
+            }
+        }
+
+        (function () {
+            customElements.define("rk-spinner", RKSpinner);
+        }());
+    </script>
+</head>
+
+<body>
+    <rk-spinner></rk-spinner>
+
+</body>
+
+</html>
